@@ -17,16 +17,15 @@ if (!empty($_SESSION['error'] )) {
 </head>
 <body>
 <div class="container mt-4">
+    <?php
+    if ($_SESSION['user'] == ''):
+    ?>
     <div class="row">
         <div class="col">
             <form action="validation-form/check.php" method="post">
                 <h1>Registration form</h1>
                 <input type="text" class="form-control" name="login" id="login"
                        placeholder="Enter login">
-                <br>
-                <input type="text" class="form-control" name="name" id="name"
-                       placeholder="Enter name">
-
                 <br>
                 <input type="password" class="password" name="pass" id="pass"
                        placeholder="Enter pass">
@@ -52,5 +51,9 @@ if (!empty($_SESSION['error'] )) {
         </div>
     </div>
 </div>
+<?php else: ?>
+    <p>Привет. Для выхода нажми здесь  <?
+        $_SESSION['user']['login'] ?> <a href="validation-form/exit.php">Выход</a></p>
+<?php endif;?>
 </body>
 </html>
